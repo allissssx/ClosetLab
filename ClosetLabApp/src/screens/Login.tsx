@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
-
+import { useFonts } from "@expo-google-fonts/pirata-one";
+import { PirataOne_400Regular } from "@expo-google-fonts/pirata-one";
 
 export default function Login ({navigation} : any){
 
@@ -21,8 +22,21 @@ export default function Login ({navigation} : any){
         console.log("");
     }
 
+    const [fontsLoaded] = useFonts({
+    PirataOne: PirataOne_400Regular,
+    });
+
+    if (!fontsLoaded) return null;
+
     return(
+        <ImageBackground
+      source={require('../../assets/fondo.jpg')}
+            style={styles.background}
+      resizeMode="cover"
+    >
         <View style={styles.container}>
+            <Text style={styles.title}>Iniciar Sesión</Text>
+            
             <CustomInput  
                 onChangeText={setEmail}
                 value={email}
@@ -36,21 +50,37 @@ export default function Login ({navigation} : any){
                 placeholder='Contraseña'
                 type='password'
             />
+            <CustomButton title = "¿Olvidaste tu contraseña?" onPressButton={handleOnPressForgotPwd} variant='tertiary' disabled />
+
 
             <View style ={styles.buttonsContainer}>
-                <CustomButton title = "Iniciar Sesion" onPressButton={handleOnPressLogIn} />
-                <CustomButton title = "Forgot your password?" onPressButton={handleOnPressForgotPwd} variant='tertiary' disabled />
+                <CustomButton title = "Iniciar Sesión" onPressButton={handleOnPressLogIn} />
+                <CustomButton title = "Registrarse" onPressButton={handleOnPressSignUp} variant='secondary'/>
             </View>
         </View>
+        </ImageBackground>
     );
 }
 
 const styles = StyleSheet.create({
+    background: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
+  title:{
+    fontSize: 60,
+    color: '#651d20', 
+    paddingBottom: 30,
+    fontFamily: "PirataOne"
+  },
   container: {
-    marginTop: 50,
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
   },
   buttonsContainer:{
     padding: 15,
+    alignItems: "center"
   }
 });

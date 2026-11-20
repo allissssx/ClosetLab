@@ -2,14 +2,16 @@ import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useState } from "react";
 import {View, TextInput, StyleSheet, KeyboardTypeOptions, TouchableOpacity, Text,} from "react-native";
 
+type CustomInputTypes = "default" | "email" | "password" | "number";
 type Props = {
     onChangeText: (text: string) => void;
-    type?: "default" | "email" | "password" | "number";
+    type?: CustomInputTypes;
     value: string;
     placeholder: string;
 };
 
 export default function CustomInput({onChangeText, type = "default", value, placeholder}: Props) {
+        const styles = getStyles(type);
 
     const [isSecureText, setIsSecureText] = useState(type === "password");
 
@@ -45,30 +47,38 @@ export default function CustomInput({onChangeText, type = "default", value, plac
                 </TouchableOpacity>
             )}
             </View>
-            <Text>{error}</Text>
+            <Text style={styles.text}>{error}</Text>
         </View>
   );
 }
 
-const styles = StyleSheet.create({
-    wrapper:{
+const getStyles = (type: CustomInputTypes) => 
+    StyleSheet.create({    
+        wrapper:{
         paddingTop: 10,
         marginBottom: 5,
         alignSelf:'center'
     },
-  inputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingLeft: 14,
-    paddingRight: 14,
-    width: 200,
-    borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 8,
-  },
-  input: {
-    fontSize: 15,
-    paddingVertical: 5,
-  },
+    inputContainer: {
+        backgroundColor: "#aeb0b7",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: type=== "password" ? "space-between" : undefined,
+        paddingVertical: 5,
+        width: 200,
+        borderColor: "white",
+        borderWidth: 1,
+        borderRadius: 8,
+        paddingHorizontal: 14,
+    },
+    input: {
+        flex:1,
+        fontSize: 15,
+        paddingVertical: 5,
+        color: "black",
+        textAlign: "left"
+    },
+    text: {
+        color: "white"
+    }
 });
