@@ -26,6 +26,7 @@ export default function StackNavigator(){
             <Stack.Screen
                 name="RegisterScreen"
                 component={Register}
+                options={{headerShown: false}}
             />
 
             <Stack.Screen

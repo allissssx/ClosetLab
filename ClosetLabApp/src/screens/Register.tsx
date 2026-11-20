@@ -13,10 +13,11 @@ export default function Register ({navigation} : any){
     const [user, setUser] = useState("");
 
     const handleOnPressSignUp = () => {
-        if (email.trim() === "" && password.trim() === "") {
+        if (email.trim() === "" && password.trim() === ""
+            && nombre.trim() === "" && password.trim() === "") {
             Alert.alert(
                 "Campos obligatorios",
-                "Por favor, ingresa tu correo y contraseña."
+                "Por favor, ingrese sus datos"
             );
             return;
         }
@@ -41,6 +42,14 @@ export default function Register ({navigation} : any){
             Alert.alert(
                 "Esta ingresando un correo invalido",
                 "Por favor, ingresa un correo valido"
+            );
+        }
+
+
+        if(password.length < 4){
+            Alert.alert(
+                "Esta ingresando una contraseña muy debil",
+                "Por favor, ingresa una contraseña adecuada"
             );
             
             return;
@@ -67,6 +76,7 @@ export default function Register ({navigation} : any){
                 onChangeText={setNombre}
                 value={nombre}
                 placeholder='Nombre'
+                obligatorio= {true}
             />
 
             <CustomInput  
@@ -80,6 +90,7 @@ export default function Register ({navigation} : any){
                 value={email}
                 placeholder='Correo'
                 type='email'
+                obligatorio= {true}
             />
 
             <CustomInput  
@@ -87,6 +98,13 @@ export default function Register ({navigation} : any){
                 value={password}
                 placeholder='Contraseña'
                 type='password'
+                obligatorio= {true}
+            />
+
+            <CustomInput  
+                onChangeText={setUser}
+                value={user}
+                placeholder='Nombre de usuario'
             />
 
             <View style ={styles.buttonsContainer}>
