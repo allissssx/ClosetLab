@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 60,
     color: '#651d20', 
     paddingBottom: 30,
-    fontFamily: "PirataOne"
+    fontFamily: "PirataOne_400Regular"
   },
   container: {
     flex: 1,
