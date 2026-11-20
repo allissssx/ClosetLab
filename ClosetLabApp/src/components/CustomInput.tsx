@@ -55,8 +55,7 @@ export default function CustomInput({onChangeText, type = "default", value, plac
 const getStyles = (type: CustomInputTypes) => 
     StyleSheet.create({    
         wrapper:{
-        paddingTop: 10,
-        marginBottom: 5,
+        margin: 5,
         alignSelf:'center'
     },
     inputContainer: {
@@ -65,7 +64,7 @@ const getStyles = (type: CustomInputTypes) =>
         alignItems: "center",
         justifyContent: type=== "password" ? "space-between" : undefined,
         paddingVertical: 5,
-        width: 200,
+        width: "100%",
         borderColor: "white",
         borderWidth: 1,
         borderRadius: 8,

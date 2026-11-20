@@ -35,9 +35,9 @@ const getStyles = (variant: CustomButtonVariant) =>
         button:{
         backgroundColor: variant === "primary" ? '#471C1E' : 
                                 variant === "secondary" ?  '#333230' : 'transparent' ,
-            width: 250,
-            paddingVertical: variant === "tertiary" ? 5 : 17,
-            paddingHorizontal: 18,
+            width:  variant === "tertiary" ? "auto" : 250,
+            paddingVertical: variant === "tertiary" ? 5 : 15,
+            paddingHorizontal: 8,
             borderRadius: 8,
             alignItems: 'center',
             marginTop: variant === "tertiary" ? 3 : 15,
@@ -47,7 +47,7 @@ const getStyles = (variant: CustomButtonVariant) =>
             fontWeight: '500',
             fontSize: variant === "tertiary" ? 15 : 20,
             letterSpacing: 0.3,
-            fontFamily: "CormorantGaramond_400Regular"
-
+            fontFamily: "CormorantGaramond_400Regular",
+            textDecorationLine: variant==="tertiary" ? "underline" : undefined
         }
     })
