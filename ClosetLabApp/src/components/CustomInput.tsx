@@ -8,9 +8,10 @@ type Props = {
     type?: CustomInputTypes;
     value: string;
     placeholder: string;
+    obligatorio?: boolean;
 };
 
-export default function CustomInput({onChangeText, type = "default", value, placeholder}: Props) {
+export default function CustomInput({onChangeText, type = "default", value, placeholder, obligatorio = false}: Props) {
         const styles = getStyles(type);
 
     const [isSecureText, setIsSecureText] = useState(type === "password");
@@ -18,6 +19,10 @@ export default function CustomInput({onChangeText, type = "default", value, plac
     const getError = () => {
         if (type === "email" && !value.includes("@") && value != "") return "Correo invalido";
         if (type === "password" && value.length < 4) return "La contraseña es debil"
+    }
+
+    const CampoObligatorio = () => {
+        if (obligatorio) return "*Campo Obligatorio";
     }
 
     const icon: (typeof MaterialIcons)["name"] | undefined =
@@ -28,7 +33,7 @@ export default function CustomInput({onChangeText, type = "default", value, plac
 
     const isPasswordField = type === "password";
     const error = getError();
-
+    const campo = CampoObligatorio();
 
     return (
         <View style={styles.wrapper}>
@@ -47,7 +52,11 @@ export default function CustomInput({onChangeText, type = "default", value, plac
                 </TouchableOpacity>
             )}
             </View>
-            <Text style={styles.text}>{error}</Text>
+            <View style ={styles.textcontainer}>
+                <Text style={styles.text}>{error}</Text>
+                <Text style={styles.campoObligatorio}>{campo}</Text>
+            </View>
+            
         </View>
   );
 }
@@ -81,5 +90,14 @@ const getStyles = (type: CustomInputTypes) =>
     text: {
         color: "white",
         fontFamily: "CormorantGaramond_400Regular"
+    },
+    campoObligatorio:{
+        color: '#651d20',
+    fontFamily: "CormorantGaramond_600SemiBold",
+    },
+    textcontainer:{
+         flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%"
     }
 });
