@@ -76,9 +76,11 @@ const getStyles = (type: CustomInputTypes) =>
         fontSize: 15,
         paddingVertical: 5,
         color: "black",
-        textAlign: "left"
+        textAlign: "left",
+        fontFamily: "CormorantGaramond_400Regular"
     },
     text: {
-        color: "white"
+        color: "white",
+        fontFamily: "CormorantGaramond_400Regular"
     }
 });

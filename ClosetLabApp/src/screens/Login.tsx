@@ -2,8 +2,7 @@ import { useState } from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
-import { useFonts } from "@expo-google-fonts/pirata-one";
-import { PirataOne_400Regular } from "@expo-google-fonts/pirata-one";
+
 
 export default function Login ({navigation} : any){
 
@@ -22,11 +21,6 @@ export default function Login ({navigation} : any){
         console.log("");
     }
 
-    const [fontsLoaded] = useFonts({
-    PirataOne: PirataOne_400Regular,
-    });
-
-    if (!fontsLoaded) return null;
 
     return(
         <ImageBackground
