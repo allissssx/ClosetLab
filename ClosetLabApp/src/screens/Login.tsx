@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, ImageBackground, Alert } from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 
@@ -10,8 +10,41 @@ export default function Login ({navigation} : any){
     const [password, setPassword] = useState("");
 
     const handleOnPressLogIn = () => {
-        navigation.navigate("HomeScreen", {email});
-    }
+        if (email.trim() === "" && password.trim() === "") {
+            Alert.alert(
+                "Campos obligatorios",
+                "Por favor, ingresa tu correo y contraseña."
+            );
+            return;
+        }
+
+        if (email.trim() === "") {
+            Alert.alert(
+                "Correo requerido",
+                "Por favor, ingresa tu correo electrónico."
+            );
+            return;
+        }
+
+        if (password.trim() === "") {
+            Alert.alert(
+                "Contraseña requerida",
+                "Por favor, ingresa tu contraseña."
+            );
+        return;
+        }
+
+        if(!email.includes("@")){
+            Alert.alert(
+                "Esta ingresando un correo invalido",
+                "Por favor, ingresa un correo valido"
+            );
+            
+            return;
+        }
+
+        navigation.navigate("HomeScreen", { email: email.trim() });
+    };
 
     const handleOnPressSignUp = () => {
         navigation.navigate("RegisterScreen")
