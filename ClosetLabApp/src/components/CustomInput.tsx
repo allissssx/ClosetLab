@@ -92,7 +92,7 @@ const getStyles = (type: CustomInputTypes) =>
         fontFamily: "CormorantGaramond_400Regular"
     },
     campoObligatorio:{
-        color: '#651d20',
+        color: '#90272a',
     fontFamily: "CormorantGaramond_600SemiBold",
     },
     textcontainer:{

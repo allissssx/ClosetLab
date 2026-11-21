@@ -70,7 +70,7 @@ export default function Register ({navigation} : any){
             resizeMode="cover"
         >
         <View style={styles.container}>
-            <Text style={styles.title}>Registarse</Text>
+            <Text style={styles.title}>Registrarse</Text>
             
             <CustomInput  
                 onChangeText={setNombre}
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
   },
   text:{
     fontSize: 15,
-    color: '#651d20', 
+    color: '#90272a', 
     fontFamily: "CormorantGaramond_600SemiBold",
     letterSpacing: 0.3,
   }
