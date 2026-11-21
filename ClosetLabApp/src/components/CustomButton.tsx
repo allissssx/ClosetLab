@@ -1,28 +1,9 @@
 import { Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { CustomButtonProps, CustomButtonVariant } from "../utils/types/ButtonProps";
-import { useFonts } from "@expo-google-fonts/cormorant-garamond";
-import {
-    CormorantGaramond_400Regular,
-    CormorantGaramond_500Medium,
-    CormorantGaramond_600SemiBold,
-    CormorantGaramond_700Bold,
-} from "@expo-google-fonts/cormorant-garamond";
-
 
 export default function CustomButton({title, onPressButton, variant = "primary", disabled=false}: CustomButtonProps){
     const styles = getStyles(variant);
 
-    const [fontsLoaded] = useFonts({
-        CormorantGaramond_400Regular,
-        CormorantGaramond_500Medium,
-        CormorantGaramond_600SemiBold,
-        CormorantGaramond_700Bold,
-    });
-
-    if (!fontsLoaded) {
-        return null;
-    }
-    
     return(
         <Pressable style={styles.button} onPress={onPressButton} disabled={disabled}>
             <Text style={styles.buttonText}>{title}</Text>

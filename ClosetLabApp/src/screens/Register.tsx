@@ -55,7 +55,7 @@ export default function Register ({navigation} : any){
             return;
         }
 
-        navigation.navigate("HomeScreen", { email: email.trim() });
+        navigation.navigate("LoginScreen");
     };
 
     const handleOnPressLogIn = () => {
