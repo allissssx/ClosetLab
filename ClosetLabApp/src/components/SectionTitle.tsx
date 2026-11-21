@@ -21,8 +21,8 @@ const getStyles = (tipo: TitleTypes) =>
     StyleSheet.create({
        title:{
         fontFamily: 'PirataOne_400Regular',
-        fontSize: tipo==='Titulo' ? 60 : 40,
-        color: tipo==='Titulo' ? '#651d20' : '#33312f', 
-        paddingBottom: 5
+        fontSize: tipo==='Titulo' ? 60 : 25,
+        color: tipo==='Titulo' ? '#651d20' : '#726e68', 
+        textAlign: "center"
        }
     });
