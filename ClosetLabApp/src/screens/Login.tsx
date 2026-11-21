@@ -2,6 +2,7 @@ import { useState } from "react";
 import { View, Text, StyleSheet, ImageBackground, Alert } from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
+import Sectiontitle from "../components/SectionTitle";
 
 
 export default function Login ({navigation} : any){
@@ -62,7 +63,7 @@ export default function Login ({navigation} : any){
       resizeMode="cover"
     >
         <View style={styles.container}>
-            <Text style={styles.title}>Iniciar Sesión</Text>
+            <Sectiontitle text= "Iniciar Sesión" tipo= "Titulo"/>
             
             <CustomInput  
                 onChangeText={setEmail}
@@ -94,12 +95,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-  },
-  title:{
-    fontSize: 60,
-    color: '#651d20', 
-    paddingBottom: 30,
-    fontFamily: "PirataOne_400Regular"
   },
   container: {
     flex: 1,

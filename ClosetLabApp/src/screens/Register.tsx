@@ -2,6 +2,7 @@ import { useState } from "react";
 import { View, Text, StyleSheet, ImageBackground, Alert } from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
+import Sectiontitle from "../components/SectionTitle";
 
 
 export default function Register ({navigation} : any){
@@ -70,7 +71,7 @@ export default function Register ({navigation} : any){
             resizeMode="cover"
         >
         <View style={styles.container}>
-            <Text style={styles.title}>Registrarse</Text>
+            <Sectiontitle text= "Registrarse" tipo= "Titulo"/>
             
             <CustomInput  
                 onChangeText={setNombre}
@@ -126,12 +127,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  title:{
-    fontSize: 60,
-    color: '#651d20', 
-    paddingBottom: 30,
-    fontFamily: "PirataOne_400Regular"
-  },
+
   container: {
     flex: 1,
     justifyContent: 'center',
