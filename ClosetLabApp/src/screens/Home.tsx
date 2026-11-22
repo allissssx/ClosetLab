@@ -8,8 +8,19 @@ const myImages = [
   require("../../assets/camisa1.jpg"),
   require("../../assets/camisa2.jpg"),
   require("../../assets/zapatos.jpg"),
+   require("../../assets/camisa3.jpg"),
 ];
-export default function Home(){
+export default function Home({navigation} : any){
+
+    const handleOnPressCloset = () => {
+        navigation.navigate("ClosetScreen")
+    }
+    const handleOnPressOutfit = () => {
+        navigation.navigate("OutfitScreen")
+    }
+    const handleOnPressStore = () => {
+        navigation.navigate("StoreScreen")
+    }
     return(
         <ImageBackground
               source={require('../../assets/fondo3.jpg')}
@@ -23,13 +34,13 @@ export default function Home(){
             </View>
             <View style={styles.carousel}>
                 <ImageCarousel images={myImages} />
-                <CustomButton title={"Ver mis prendas"} onPressButton={()=>{}} variant="primary" />
-                <CustomButton title={"Crear conjunto"} onPressButton={()=>{}} variant="secondary" />
+                <CustomButton title={"Ver todas mis prendas"} onPressButton={handleOnPressCloset} variant="primary" />
+                <CustomButton title={"Crear conjunto"} onPressButton={handleOnPressOutfit} variant="secondary" />
             </View>
 
             <View style={styles.tienda}>
                 <Text style={styles.texto}>Comparte prendas que ya no utilizas con otros usuarios o para intercambio o venta</Text>
-                <CustomButton title={"Ir a la tienda"} onPressButton={()=>{}} variant="primary" />
+                <CustomButton title={"Ir a la tienda"} onPressButton={handleOnPressStore} variant="primary" />
             </View>
            
             
@@ -47,7 +58,6 @@ const styles = StyleSheet.create({
     container:{
         paddingHorizontal: 20,
         paddingVertical: 60,
-        marginBottom: 50,
         
     },
     titles:{
