@@ -2,15 +2,12 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Login from '../screens/Login';
 import Register from '../screens/Register';
 import Home from '../screens/Home';
-
-export type RootStackParamList ={
-    LoginScreen: undefined;
-    RegisterScreen: undefined; 
-    HomeScreen: {email: string};
-}
+import TabNavigator from './TabNavigator';
 
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+
+
+const Stack = createNativeStackNavigator();
 
 export default function StackNavigator(){
 
@@ -31,8 +28,8 @@ export default function StackNavigator(){
 
             <Stack.Screen
                 name="HomeScreen"
-                component={Home}
-                options={{title: "Home"}}
+                component={TabNavigator}
+                options={{headerShown: false}}
             />
         </Stack.Navigator>
     );
