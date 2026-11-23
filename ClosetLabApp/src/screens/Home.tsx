@@ -3,13 +3,9 @@ import ClothingCard from "../components/ClothingCard"
 import ImageCarousel from "../components/ImageCarousel";
 import Sectiontitle from "../components/SectionTitle";
 import CustomButton from "../components/CustomButton";
+import { clothes } from "../utils/prendas";
 
-const myImages = [
-  require("../../assets/camisa1.jpg"),
-  require("../../assets/camisa2.jpg"),
-  require("../../assets/zapatos.jpg"),
-   require("../../assets/camisa3.jpg"),
-];
+
 export default function Home({navigation} : any){
 
     const handleOnPressCloset = () => {
@@ -33,7 +29,7 @@ export default function Home({navigation} : any){
                 <Sectiontitle text={" Descubre nuevas combinaciones con lo que ya tienes"} tipo={"Subtitulo"} />
             </View>
             <View style={styles.carousel}>
-                <ImageCarousel images={myImages} />
+                <ImageCarousel images={clothes.map((item) => item.image)}/>
                 <CustomButton title={"Ver todas mis prendas"} onPressButton={handleOnPressCloset} variant="primary" />
                 <CustomButton title={"Crear conjunto"} onPressButton={handleOnPressOutfit} variant="secondary" />
             </View>
