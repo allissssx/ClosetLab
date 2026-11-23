@@ -2,6 +2,7 @@ import { View,Text, StyleSheet, ImageBackground, ScrollView, FlatList } from "re
 import ClothingCard from "../components/ClothingCard";
 import Sectiontitle from "../components/SectionTitle";
 import { clothes } from "../utils/prendas";
+import CustomButton from "../components/CustomButton";
 
 
 export default function Closet(){
@@ -21,6 +22,14 @@ export default function Closet(){
             ListHeaderComponent={
                 <View style={styles.header}>
                     <Sectiontitle text={"Mis Prendas"} tipo={"Titulo"} />
+                    <CustomButton title={"Agregar nueva prenda"} onPressButton={() => {}} variant="secondary" />
+                    <View style={styles.categorias} >
+                        <CustomButton title={"Todo"} onPressButton={() => {}} variant="tertiary" />
+                        <CustomButton title={"Camisas"} onPressButton={() => {}} variant="tertiary" />
+                        <CustomButton title={"Pantalones"} onPressButton={() => {}} variant="tertiary" />
+                        <CustomButton title={"Vestidos"} onPressButton={() => {}} variant="tertiary" />
+                        <CustomButton title={"Calzado"} onPressButton={() => {}} variant="tertiary" />
+                    </View>
                 </View>
             }
             renderItem={({ item }) => (
@@ -48,6 +57,7 @@ const styles = StyleSheet.create({
 
     header: {
         marginBottom: 20,
+        alignItems:'center'
     },
 
     row: {
@@ -55,5 +65,9 @@ const styles = StyleSheet.create({
         marginBottom: 15,
     },
 
-    
+    categorias:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingTop: 20
+    }
 });
