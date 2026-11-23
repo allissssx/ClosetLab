@@ -1,18 +1,30 @@
 import { View, Image, Text, StyleSheet } from "react-native";
+import CustomButton from "./CustomButton";
 
 type cardProps= {
     name: string;
     categoria: string;
     image: any;
+    venta?: boolean;
+    precio?: number;
 }
 
-export default function ClothingCard({name, categoria, image}: cardProps){
-
+export default function ClothingCard({name, categoria, image, venta=false, precio= 0}: cardProps){
+const formatearPrecio = (precio: number): string => {
+  return `L ${precio.toFixed(2)}`;
+};
     return(
         <View style={styles.container}>
             <Image source={image} style={styles.imagen}/>
             <Text style={styles.nombre}>{name}</Text>
             <Text style={styles.categ}>{categoria}</Text>
+            {venta &&(
+                <View>
+                    <CustomButton title={"Agregar al carrito"} onPressButton={()=> {}} variant="tertiary" />
+                    <Text style={styles.precio} >{formatearPrecio(precio)} </Text>
+                </View>
+                
+            )}
         </View>
     );
 }
@@ -45,6 +57,12 @@ const styles = StyleSheet.create({
         fontFamily: 'CormorantGaramond_400Regular',
         fontSize: 15,
         color: '#726e68',
+        textAlign: 'center'
+    },
+    precio: {
+        fontFamily: 'CormorantGaramond_400Regular',
+        fontSize: 15,
+        color: '#b7b4ae',
         textAlign: 'center'
     }
 });

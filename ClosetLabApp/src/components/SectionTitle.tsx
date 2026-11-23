@@ -22,7 +22,7 @@ const getStyles = (tipo: TitleTypes) =>
        title:{
         fontFamily: 'PirataOne_400Regular',
         fontSize: tipo==='Titulo' ? 60 : 25,
-        color: tipo==='Titulo' ? '#651d20' : '#726e68', 
+        color: tipo==='Titulo' ? '#651d20' : '#b7b4ae', 
         textAlign: "center"
        }
     });
