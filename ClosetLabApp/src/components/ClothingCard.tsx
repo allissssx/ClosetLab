@@ -22,15 +22,14 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: '#33312f',
         borderRadius: 10,
-        backgroundColor: '#0a0a0a',
-        padding: 10,
-        flex: 1,
-        margin: 15
+        padding: 6,
+        width: '48%',
+        backgroundColor: '#0a0a0a'
     },
 
     imagen:{
         width: '100%',
-        height: 135,
+        height: 180,
         borderRadius: 10,
         resizeMode: 'cover'
     },
