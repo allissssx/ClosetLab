@@ -1,13 +1,13 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Login from '../screens/Login';
 import Register from '../screens/Register';
-import Home from '../screens/Home';
+import ClothingDetail from '../screens/features/ClothingDetail';
+import { RootStackParamList } from '../utils/types/NavigationTypes';
 import TabNavigator from './TabNavigator';
 
 
 
-
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function StackNavigator(){
 
@@ -27,8 +27,14 @@ export default function StackNavigator(){
             />
 
             <Stack.Screen
-                name="HomeScreen"
+                name="TabScreen"
                 component={TabNavigator}
+                options={{headerShown: false}}
+            />
+
+            <Stack.Screen
+                name="ClothingDetailScreen"
+                component={ClothingDetail}
                 options={{headerShown: false}}
             />
         </Stack.Navigator>

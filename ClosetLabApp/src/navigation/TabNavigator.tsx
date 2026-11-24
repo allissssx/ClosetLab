@@ -5,8 +5,11 @@ import Closet from '../screens/Closet';
 import Outfit from '../screens/Outfit';
 import Store from '../screens/Store';
 import { Ionicons } from '@expo/vector-icons';
+import { TabsParamList } from '../utils/types/NavigationTypes';
 
-const Tab = createBottomTabNavigator();
+
+
+const Tab = createBottomTabNavigator<TabsParamList>();
 
 export default function TabNavigator({ route }: any) {
     const { email } = route.params;
@@ -25,7 +28,7 @@ export default function TabNavigator({ route }: any) {
         }}
     >
 
-        <Tab.Screen name="Home" component={Home} 
+        <Tab.Screen name="HomeScreen" component={Home} 
             options={{ title: "Inicio",
                 tabBarIcon: ({ color, size, focused }) => (
                     <Ionicons
@@ -69,7 +72,7 @@ export default function TabNavigator({ route }: any) {
                 ),
             }}/>
 
-        <Tab.Screen name="ProfileScreem" component={Profile} initialParams={{ email: email }}
+        <Tab.Screen name="ProfileScreen" component={Profile} initialParams={{ email: email }}
             options={{ title: "Mi Perfil",
                 tabBarIcon: ({ color, size, focused }) => (
                     <Ionicons
