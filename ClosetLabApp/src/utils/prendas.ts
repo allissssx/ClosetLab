@@ -4,7 +4,8 @@ export type Clothes ={
     category: string,
     image: any,
     venta: boolean,
-    precio?: number
+    precio?: number,
+    talla: string
 }
 
 export const clothes: Clothes[] = [
@@ -14,14 +15,16 @@ export const clothes: Clothes[] = [
         category: 'Camisas',
         image: require('../../assets/camisa1.jpg'),
         venta: true,
-        precio: 100
+        precio: 100,
+        talla: 'm'
     },
     {
         id: '2',
         name: 'Camisa blanaca',
         category: 'Camisas',
         image: require('../../assets/camisa3.jpg'),
-        venta: false
+        venta: false,
+        talla: 's'
     },
     {
         id: '3',
@@ -29,13 +32,15 @@ export const clothes: Clothes[] = [
         category: 'Calzado',
         image: require('../../assets/zapatos.jpg'),
         venta: true,
-        precio: 500
+        precio: 500,
+        talla: '8'
     },
     {
         id: '4',
         name: 'Camisa blanaca',
         category: 'Camisas',
         image: require('../../assets/camisa2.jpg'),
-        venta: false
+        venta: false,
+        talla: 's'
     },
 ];
