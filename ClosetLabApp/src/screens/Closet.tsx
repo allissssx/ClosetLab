@@ -8,19 +8,10 @@ import CustomButton from "../components/CustomButton";
 export default function Closet(){
     return(
         <ImageBackground
-                      source={require('../../assets/fondo3.jpg')}
-                            style={styles.background}
-                      resizeMode="cover"
-                    >
-
-        <FlatList
-            data={clothes}
-            numColumns={2}
-            keyExtractor={(item) => item.id}
-            contentContainerStyle={styles.container}
-            columnWrapperStyle={styles.row}
-            ListHeaderComponent={
-                <View style={styles.header}>
+            source={require('../../assets/fondo3.jpg')}
+            style={styles.background}
+            resizeMode="cover">
+                 <View style={styles.header}>
                     <Sectiontitle text={"Mis Prendas"} tipo={"Titulo"} />
                     <CustomButton title={"Agregar nueva prenda"} onPressButton={() => {}} variant="secondary" />
                     <View style={styles.categorias} >
@@ -31,7 +22,13 @@ export default function Closet(){
                         <CustomButton title={"Calzado"} onPressButton={() => {}} variant="tertiary" />
                     </View>
                 </View>
-            }
+        <FlatList
+            data={clothes}
+            numColumns={2}
+            keyExtractor={(item) => item.id}
+            contentContainerStyle={styles.container}
+            columnWrapperStyle={styles.row}
+            
             renderItem={({ item }) => (
                 <ClothingCard
                     name={item.name}
@@ -52,10 +49,12 @@ const styles = StyleSheet.create({
   },
     container:{
         paddingHorizontal: 20,
-        paddingVertical: 60,
+        paddingVertical: 15,
     },
 
     header: {
+        paddingTop: 60,
+        paddingHorizontal: 20,
         marginBottom: 20,
         alignItems:'center'
     },

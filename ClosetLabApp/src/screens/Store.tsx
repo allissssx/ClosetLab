@@ -3,6 +3,7 @@ import ClothingCard from "../components/ClothingCard";
 import Sectiontitle from "../components/SectionTitle";
 import { clothes } from "../utils/prendas";
 import CustomButton from "../components/CustomButton";
+import { Ionicons } from "@expo/vector-icons";
 
 const prendaVenta = clothes.filter(
     (item) =>
@@ -12,20 +13,16 @@ const prendaVenta = clothes.filter(
 export default function Store(){
     return(
         <ImageBackground
-                      source={require('../../assets/fondo3.jpg')}
-                            style={styles.background}
-                      resizeMode="cover"
-                    >
-
-        <FlatList
-            data={prendaVenta}
-            numColumns={2}
-            keyExtractor={(item) => item.id}
-            contentContainerStyle={styles.container}
-            columnWrapperStyle={styles.row}
-            ListHeaderComponent={
-                <View style={styles.header}>
+            source={require('../../assets/fondo3.jpg')}
+            style={styles.background}
+            resizeMode="cover">
+            
+             <View style={styles.header}>
+                <View style={styles.title}>
                     <Sectiontitle text={"Tienda"} tipo={"Titulo"} />
+                    <Ionicons name={"cart"} size={30} color={'#651d20'} style={styles.cart} />
+                </View>
+                    
                     <Sectiontitle text={"Compra, vende o intercambia prendas que ya no utilices"} tipo={"Subtitulo"} />
                     <View style={styles.categorias} >
                         <CustomButton title={"Todo"} onPressButton={() => {}} variant="tertiary" />
@@ -35,7 +32,13 @@ export default function Store(){
                         <CustomButton title={"Calzado"} onPressButton={() => {}} variant="tertiary" />
                     </View>
                 </View>
-            }
+
+        <FlatList
+            data={prendaVenta}
+            numColumns={2}
+            keyExtractor={(item) => item.id}
+            contentContainerStyle={styles.container}
+            columnWrapperStyle={styles.row}
             renderItem={({ item }) => (
                 <ClothingCard
                     name={item.name}
@@ -55,13 +58,26 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-  },
+    },
     container:{
         paddingHorizontal: 20,
-        paddingVertical: 60,
+        paddingVertical: 15,
+    },
+
+    title:{
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',      
+    },
+
+    cart:{
+        position: 'absolute',
+        right: 0,
     },
 
     header: {
+        paddingTop: 60,
+        paddingHorizontal: 20,
         marginBottom: 20,
         alignItems:'center'
     },
