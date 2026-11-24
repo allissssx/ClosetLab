@@ -8,7 +8,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
-export default function TabNavigator() {
+export default function TabNavigator({ route }: any) {
+    const { email } = route.params;
   return (
     <Tab.Navigator
         screenOptions={{
@@ -68,7 +69,7 @@ export default function TabNavigator() {
                 ),
             }}/>
 
-        <Tab.Screen name="ProfileScreem" component={Profile} 
+        <Tab.Screen name="ProfileScreem" component={Profile} initialParams={{ email: email }}
             options={{ title: "Mi Perfil",
                 tabBarIcon: ({ color, size, focused }) => (
                     <Ionicons

@@ -44,7 +44,7 @@ export default function Login ({navigation} : any){
             return;
         }
 
-        navigation.navigate("HomeScreen");
+        navigation.navigate("HomeScreen", {email});
     };
 
     const handleOnPressSignUp = () => {
