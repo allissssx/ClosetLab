@@ -6,7 +6,7 @@ export type RootStackParamList ={
     LoginScreen: undefined;
     RegisterScreen: undefined; 
     TabScreen: NavigatorScreenParams<TabsParamList>;
-    ClothingDetailScreen: undefined;
+    ClothingDetailScreen: {id: string};
 }
 
 export type TabsParamList ={
@@ -18,6 +18,9 @@ export type TabsParamList ={
 }
 
 export type MainTabsScreenProps<T extends keyof TabsParamList> = CompositeScreenProps<
-    NativeStackScreenProps <RootStackParamList>,
-    BottomTabScreenProps<TabsParamList, T>
+    BottomTabScreenProps<TabsParamList, T>,
+    NativeStackScreenProps<RootStackParamList>
 >;
+
+export type RootStackScreenProps<T extends keyof RootStackParamList> =
+    NativeStackScreenProps<RootStackParamList, T>;

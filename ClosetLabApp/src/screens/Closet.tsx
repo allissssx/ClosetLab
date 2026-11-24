@@ -1,17 +1,21 @@
-import { View,Text, StyleSheet, ImageBackground, ScrollView, FlatList } from "react-native"
+import { View,Text, StyleSheet, ImageBackground, ScrollView, FlatList, Pressable } from "react-native"
 import ClothingCard from "../components/ClothingCard";
 import Sectiontitle from "../components/SectionTitle";
 import { clothes } from "../utils/prendas";
 import CustomButton from "../components/CustomButton";
+import { MainTabsScreenProps } from "../utils/types/NavigationTypes";
+
+type Props = MainTabsScreenProps<"ClosetScreen">;
 
 
-export default function Closet(){
+export default function Closet({ navigation }: Props){
+
     return(
         <ImageBackground
             source={require('../../assets/fondo3.jpg')}
             style={styles.background}
             resizeMode="cover">
-                 <View style={styles.header}>
+                <View style={styles.header}>
                     <Sectiontitle text={"Mis Prendas"} tipo={"Titulo"} />
                     <CustomButton title={"Agregar nueva prenda"} onPressButton={() => {}} variant="secondary" />
                     <View style={styles.categorias} >
@@ -28,13 +32,15 @@ export default function Closet(){
             keyExtractor={(item) => item.id}
             contentContainerStyle={styles.container}
             columnWrapperStyle={styles.row}
-            
             renderItem={({ item }) => (
-                <ClothingCard
-                    name={item.name}
-                    categoria={item.category}
-                    image={item.image}
-                />
+                <Pressable style={styles.cardContainer}
+                onPress={() => navigation.navigate("ClothingDetailScreen", { id: item.id })}>
+                    <ClothingCard
+                        name={item.name}
+                        categoria={item.category}
+                        image={item.image}
+                    />
+                </Pressable>
             )}
             />
         </ImageBackground>
@@ -68,5 +74,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingTop: 20
-    }
+    },
+    cardContainer: {
+        width: "48%",
+    },
 });
