@@ -4,11 +4,21 @@ import Sectiontitle from "../components/SectionTitle";
 import { clothes } from "../utils/prendas";
 import CustomButton from "../components/CustomButton";
 import { MainTabsScreenProps } from "../utils/types/NavigationTypes";
+import { useState } from "react";
 
 type Props = MainTabsScreenProps<"ClosetScreen">;
 
 
 export default function Closet({ navigation }: Props){
+    const [categoria, setCategoria] = useState("Todo");
+
+    const prendasFiltro = clothes.filter((item) => {
+        if (categoria === "Todo") {
+            return true;
+        }
+
+        return item.category === categoria;
+    });
 
     return(
         <ImageBackground
@@ -19,15 +29,16 @@ export default function Closet({ navigation }: Props){
                     <Sectiontitle text={"Mis Prendas"} tipo={"Titulo"} />
                     <CustomButton title={"Agregar nueva prenda"} onPressButton={() => {}} variant="secondary" />
                     <View style={styles.categorias} >
-                        <CustomButton title={"Todo"} onPressButton={() => {}} variant="tertiary" />
-                        <CustomButton title={"Camisas"} onPressButton={() => {}} variant="tertiary" />
-                        <CustomButton title={"Pantalones"} onPressButton={() => {}} variant="tertiary" />
-                        <CustomButton title={"Vestidos"} onPressButton={() => {}} variant="tertiary" />
-                        <CustomButton title={"Calzado"} onPressButton={() => {}} variant="tertiary" />
+                        <CustomButton title={"Todo"} onPressButton={() => setCategoria("Todo")} variant="tertiary" />
+                        <CustomButton title={"Tops"} onPressButton={() => setCategoria("Top")} variant="tertiary" />
+                        <CustomButton title={"Bottoms"} onPressButton={() => setCategoria("Bottom")} variant="tertiary" />
+                        <CustomButton title={"Calzado"} onPressButton={() => setCategoria("Calzado")} variant="tertiary" />
+                        <CustomButton title={"Vestidos"} onPressButton={() => setCategoria("Vestido")} variant="tertiary" />
+                        <CustomButton title={"Accesorios"} onPressButton={() => setCategoria("Accesorio")} variant="tertiary" />   
                     </View>
                 </View>
         <FlatList
-            data={clothes}
+            data={prendasFiltro}
             numColumns={2}
             keyExtractor={(item) => item.id}
             contentContainerStyle={styles.container}
@@ -52,7 +63,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-  },
+    },
     container:{
         paddingHorizontal: 20,
         paddingVertical: 15,

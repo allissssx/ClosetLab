@@ -5,15 +5,30 @@ import { clothes } from "../utils/prendas";
 import CustomButton from "../components/CustomButton";
 import { Ionicons } from "@expo/vector-icons";
 import { MainTabsScreenProps } from "../utils/types/NavigationTypes";
+import { useState } from "react";
 
 type Props = MainTabsScreenProps<"StoreScreen">;
 
-const prendaVenta = clothes.filter(
-    (item) =>
-      item.venta === true
-  );
 
 export default function Store({ navigation }: Props){
+
+    const [categoria, setCategoria] = useState("Todo");
+
+    const prendaVenta = clothes.filter(
+        (item) =>
+        item.venta === true
+    );
+    
+    const prendasFiltro = prendaVenta.filter((item) => {
+        if (categoria === "Todo") {
+            return true;
+        }
+        return item.category === categoria;
+    });
+    
+    
+
+
     return(
         <ImageBackground
             source={require('../../assets/fondo3.jpg')}
@@ -27,16 +42,17 @@ export default function Store({ navigation }: Props){
                     
                 <Sectiontitle text={"Compra, vende o intercambia prendas que ya no utilices"} tipo={"Subtitulo"} />
                 <View style={styles.categorias} >
-                    <CustomButton title={"Todo"} onPressButton={() => {}} variant="tertiary" />
-                    <CustomButton title={"Camisas"} onPressButton={() => {}} variant="tertiary" />
-                    <CustomButton title={"Pantalones"} onPressButton={() => {}} variant="tertiary" />
-                    <CustomButton title={"Vestidos"} onPressButton={() => {}} variant="tertiary" />
-                    <CustomButton title={"Calzado"} onPressButton={() => {}} variant="tertiary" />
+                    <CustomButton title={"Todo"} onPressButton={() => setCategoria("Todo")} variant="tertiary" />
+                    <CustomButton title={"Tops"} onPressButton={() => setCategoria("Top")} variant="tertiary" />
+                    <CustomButton title={"Bottoms"} onPressButton={() => setCategoria("Bottom")} variant="tertiary" />
+                    <CustomButton title={"Calzado"} onPressButton={() => setCategoria("Calzado")} variant="tertiary" />
+                    <CustomButton title={"Vestidos"} onPressButton={() => setCategoria("Vestido")} variant="tertiary" />
+                    <CustomButton title={"Accesorios"} onPressButton={() => setCategoria("Accesorio")} variant="tertiary" /> 
                 </View>
             </View>
 
         <FlatList
-            data={prendaVenta}
+            data={prendasFiltro}
             numColumns={2}
             keyExtractor={(item) => item.id}
             contentContainerStyle={styles.container}
