@@ -1,6 +1,7 @@
 import { View,Text, Image, StyleSheet, ImageBackground } from "react-native"
 import { MainTabsScreenProps, RootStackParamList, RootStackScreenProps } from "../../utils/types/NavigationTypes";
 import { clothes } from "../../utils/prendas";
+import Sectiontitle from "../../components/SectionTitle";
 
 type Props = RootStackScreenProps<"ClothingDetailScreen">;
 
@@ -24,13 +25,16 @@ export default function ClothingDetail({ route }: Props){
             style={styles.background}
             resizeMode="cover">
         <View style={styles.imagecontainer}>
+            <Sectiontitle text={"Info. Prenda"} tipo={"Titulo"} />
             <Image source={prenda.image} style={styles.image} />
         </View>
         <View style={styles.textcontainer}>
             <Text style={styles.texto}>{prenda.name}</Text>
             <Text style={styles.texto}>Categoria: {prenda.category}</Text>
-            <Text style={styles.texto}>Precio: L {prenda.precio ?? ""}</Text>
+            <Text style={styles.texto}>{prenda.precio!=null ?  "Precio: L " + prenda.precio : "Precio: -----"}</Text>
             <Text style={styles.texto}>Talla: {prenda.talla}</Text>
+            <Text style={styles.texto}>Estado: {prenda.estado}</Text>
+            <Text style={styles.texto}>{prenda.venta===true ? "Disponible para venta: Si" : "Disponible para venta: No"}</Text>
         </View>
         </ImageBackground>
         );
@@ -46,6 +50,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
         marginTop: 80,
+        gap: 30
     },
     image: {
         borderRadius: 8,
