@@ -1,5 +1,4 @@
-import { Pressable, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { CustomButtonProps, CustomButtonVariant } from "../utils/types/ButtonProps";
+import {StyleSheet, Text, View } from "react-native";
 
 type TitleTypes = "Titulo" | "Subtitulo" 
 type Props = {
@@ -19,10 +18,10 @@ export default function Sectiontitle({text, tipo}: Props){
 
 const getStyles = (tipo: TitleTypes) => 
     StyleSheet.create({
-       title:{
+    title:{
         fontFamily: 'PirataOne_400Regular',
         fontSize: tipo==='Titulo' ? 60 : 25,
         color: tipo==='Titulo' ? '#651d20' : '#b7b4ae', 
         textAlign: "center"
-       }
+    }
     });

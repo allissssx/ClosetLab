@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     nombre:{
         fontFamily: 'CormorantGaramond_600SemiBold',
         fontSize: 20,
-        color: '#622427',
+        color: '#7c2c30',
         textAlign: 'center'
     },
 
