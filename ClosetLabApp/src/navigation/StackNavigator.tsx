@@ -4,6 +4,7 @@ import Register from '../screens/Register';
 import ClothingDetail from '../screens/features/ClothingDetail';
 import { RootStackParamList } from '../utils/types/NavigationTypes';
 import TabNavigator from './TabNavigator';
+import AddClothing from '../screens/features/AddClothing';
 
 
 
@@ -35,6 +36,12 @@ export default function StackNavigator(){
             <Stack.Screen
                 name="ClothingDetailScreen"
                 component={ClothingDetail}
+                options={{headerShown: false}}
+            />
+
+            <Stack.Screen
+                name="AddClothingScreen"
+                component={AddClothing}
                 options={{headerShown: false}}
             />
         </Stack.Navigator>

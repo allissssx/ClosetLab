@@ -5,6 +5,7 @@ import { clothes } from "../utils/prendas";
 import CustomButton from "../components/CustomButton";
 import { MainTabsScreenProps } from "../utils/types/NavigationTypes";
 import { useState } from "react";
+import AddClothing from "./features/AddClothing";
 
 type Props = MainTabsScreenProps<"ClosetScreen">;
 
@@ -27,7 +28,8 @@ export default function Closet({ navigation }: Props){
             resizeMode="cover">
                 <View style={styles.header}>
                     <Sectiontitle text={"Mis Prendas"} tipo={"Titulo"} />
-                    <CustomButton title={"Agregar nueva prenda"} onPressButton={() => {}} variant="secondary" />
+                    <CustomButton title={"Agregar nueva prenda"} 
+                    onPressButton={() => navigation.navigate("AddClothingScreen")} variant="secondary" />
                     <View style={styles.categorias} >
                         <CustomButton title={"Todo"} onPressButton={() => setCategoria("Todo")} variant="tertiary" />
                         <CustomButton title={"Tops"} onPressButton={() => setCategoria("Top")} variant="tertiary" />

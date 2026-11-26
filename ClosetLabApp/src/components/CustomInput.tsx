@@ -96,8 +96,8 @@ const getStyles = (type: CustomInputTypes) =>
     fontFamily: "CormorantGaramond_600SemiBold",
     },
     textcontainer:{
-         flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%"
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "100%"
     }
 });

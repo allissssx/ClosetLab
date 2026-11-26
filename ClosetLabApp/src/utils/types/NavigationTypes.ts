@@ -7,6 +7,7 @@ export type RootStackParamList ={
     RegisterScreen: undefined; 
     TabScreen: NavigatorScreenParams<TabsParamList>;
     ClothingDetailScreen: {id: string};
+    AddClothingScreen: undefined;
 }
 
 export type TabsParamList ={
